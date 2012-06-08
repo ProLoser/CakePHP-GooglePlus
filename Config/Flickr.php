@@ -1,50 +1,53 @@
 <?php
 /**
- * A Flickr API Method Map
+ * A Vimeo API Method Map
  *
  * Refer to the apis plugin for how to build a method map
  * https://github.com/ProLoser/CakePHP-Api-Datasources
  *
  */
-$config['Apis']['Flickr']['hosts'] = array(
+$config['Apis']['Vimeo']['hosts'] = array(
 	'oauth' => 'www.flickr.com/services/oauth',
-	'rest' => 'api.flickr.com/services/rest',
+	'rest' => 'vimeo.com/api/rest/v2',
 );
-$config['Apis']['Flickr']['oauth'] = array(
+$config['Apis']['Vimeo']['oauth'] = array(
 	'version' => '1.0',
 	'scheme' => 'http',
-	// http://www.flickr.com/services/api/auth.howto.web.html
+	// https://developer.vimeo.com/apis/advanced#oauth
 	'login' => '?api_key=:login&perms=:permissions&api_sig=:token',
-	// http://www.flickr.com/services/api/auth.oauth.html
 	'request' => 'request_token',
 	'authorize' => 'authorize',
 	'access' => 'access_token',
 );
-$config['Apis']['Flickr']['read'] = array(
+$config['Apis']['Vimeo']['read'] = array(
 	// field
 	'people' => array(
 		// api url
-		'flickr.people.getInfo' => array(
+		'vimeo.people.getInfo' => array(
 			// required conditions
 			'user_id',
 			// optional conditions the api call can take
 			'optional' => array(),
 		),
-		'flickr.people.findByUsername' => array(
-			'username',
-		),
-		'flickr.people.findByEmail' => array(
+		//Not spelled out in the doc, not sure if it will return anything
+		//'vimeo.people.findByUsername' => array(
+		//	'username',
+		//),
+		'vimeo.people.findByEmail' => array(
 			'find_email',
 		),
-		'flickr.photos.people.getList' => array(
-			'photo_id',
-		),
-		'flickr.test.login' => array(),
+		//Not in the API doc either
+		//'vimeo.photos.people.getList' => array(
+		//	'photo_id',
+		//),
+		'vimeo.test.login' => array(),
 	),
-	'sets' => array(
-		'flickr.photosets.getInfo' => array(
-			'photoset_id',
+	'albums' => array(
+		'vimeo.albums.getVideos' => array(
+			'album_id',
 		),
+		//I don't think we want anything else
+		/*
 		'flickr.photosets.getContext' => array(
 			'photoset_id',
 			'photo_id',
@@ -54,27 +57,29 @@ $config['Apis']['Flickr']['read'] = array(
 				'user_id',
 			),
 		),
+		https://developer.vimeo.com/apis/advanced/methods#vimeo-albums
+		*/
 	),
-	'photos' => array(
-		'flickr.photosets.getPhotos' => array(
-			'photoset_id',
+	'videos' => array(
+		'vimeo.videos.getInfo' => array(
+			'video_id',
 		),
-		'flickr.photos.getNotInSet' => array(
-
+		'flickr.photos.getCollections' => array(
+			'video_id',
 		),
 	),
-	'comments' => array(
-		'flickr.photos.comments.getList' => array(
-			'photo_id',
+	'video.comments' => array(
+		'vimeo.videos.comments.getList' => array(
+			'video_id',
 		),
 	),
 );
 
-$config['Apis']['Flickr']['write'] = array(
+$config['Apis']['Vimeo']['write'] = array(
 );
 
-$config['Apis']['Flickr']['update'] = array(
+$config['Apis']['Vimeo']['update'] = array(
 );
 
-$config['Apis']['Flickr']['delete'] = array(
+$config['Apis']['Vimeo']['delete'] = array(
 );
