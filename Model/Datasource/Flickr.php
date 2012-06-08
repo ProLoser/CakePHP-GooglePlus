@@ -1,14 +1,15 @@
 <?php
 /**
- * Flickr DataSource
+ * Vimeo DataSource
  *
  * [Short Description]
  *
  * @package default
  * @author Dean Sofer
+ * @Hacker Kevin Dimond
  **/
 App::uses('ApisSource', 'Apis.Model/Datasource');
-class Flickr extends ApisSource {
+class Vimeo extends ApisSource {
 
 	// TODO: Relocate to a dedicated schema file
 	var $_schema = array();
@@ -16,7 +17,7 @@ class Flickr extends ApisSource {
     public $options = array(
         'protocol'   			=> 'http',
         'format'     			=> 'json',
-        'user_agent' 			=> 'CakePHP Flickr Datasource',
+        'user_agent' 			=> 'CakePHP Vimeo Datasource',
         'http_port'  			=> 80,
         'timeout'    			=> 10,
         'login'      			=> null,
