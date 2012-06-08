@@ -7,14 +7,14 @@
  *
  */
 $config['Apis']['Vimeo']['hosts'] = array(
-	'oauth' => 'www.flickr.com/services/oauth',
+	'oauth' => 'vimeo.com/oauth',
 	'rest' => 'vimeo.com/api/rest/v2',
 );
+// http://vimeo.com/api/docs/advanced-api
 $config['Apis']['Vimeo']['oauth'] = array(
 	'version' => '1.0',
 	'scheme' => 'http',
-	// https://developer.vimeo.com/apis/advanced#oauth
-	'login' => '?api_key=:login&perms=:permissions&api_sig=:token',
+	'login' => 'authenticate', //Exactly like authorize, just auto-redirects
 	'request' => 'request_token',
 	'authorize' => 'authorize',
 	'access' => 'access_token',
