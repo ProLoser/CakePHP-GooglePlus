@@ -22,56 +22,52 @@ $config['Apis']['Vimeo']['oauth'] = array(
 $config['Apis']['Vimeo']['read'] = array(
 	// field
 	'people' => array(
-		// api url
-		'vimeo.people.getInfo' => array(
-			// required conditions
-			'user_id',
-			// optional conditions the api call can take
-			'optional' => array(),
-		),
-		//Not spelled out in the doc, not sure if it will return anything
-		//'vimeo.people.findByUsername' => array(
-		//	'username',
-		//),
 		'vimeo.people.findByEmail' => array(
-			'find_email',
+			'email',
 		),
-		//Not in the API doc either
-		//'vimeo.photos.people.getList' => array(
-		//	'photo_id',
-		//),
-		'vimeo.test.login' => array(),
-	),
-	'albums' => array(
-		'vimeo.albums.getVideos' => array(
-			'album_id',
-		),
-		//I don't think we want anything else
-		/*
-		'flickr.photosets.getContext' => array(
-			'photoset_id',
-			'photo_id',
-		),
-		'flickr.photosets.getList' => array(
+		// api url
+		'vimeo.people.getInfo' => array( // See 'test' section below for lighter response
+			// optional conditions the api call can take
 			'optional' => array(
 				'user_id',
 			),
 		),
-		https://developer.vimeo.com/apis/advanced/methods#vimeo-albums
-		*/
+	),
+	'albums' => array(
+		'vimeo.albums.getAll' => array(
+			'optional' => array(
+				'user_id',
+				'sort', // Method to sort by: newest, oldest, most_played, most_commented, or most_liked.
+				'page', // The page number to show.
+				'per_page', // Number of items to show on each page. Max 50.
+			),
+		),
 	),
 	'videos' => array(
+		'vimeo.albums.getVideos' => array(
+			'album_id',
+		),
 		'vimeo.videos.getInfo' => array(
 			'video_id',
 		),
-		'flickr.photos.getCollections' => array(
-			'video_id',
+		'vimeo.videos.getAll' => array(
+			'optional' => array(
+				'user_id',
+				'sort',
+				'page',
+				'per_page',
+				'summary_response',
+				'full_response',
+			),
 		),
 	),
 	'video.comments' => array(
 		'vimeo.videos.comments.getList' => array(
 			'video_id',
 		),
+	),
+	'test' => array(
+		'vimeo.test.login' => array(), // Just returns id + username if logged in
 	),
 );
 
