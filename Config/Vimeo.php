@@ -13,7 +13,7 @@ $config['Apis']['Vimeo']['hosts'] = array(
 // http://vimeo.com/api/docs/advanced-api
 $config['Apis']['Vimeo']['oauth'] = array(
 	'version' => '1.0',
-	'scheme' => 'http',
+	'scheme' => 'https',
 	'login' => 'authenticate', //Exactly like authorize, just auto-redirects
 	'request' => 'request_token',
 	'authorize' => 'authorize',
